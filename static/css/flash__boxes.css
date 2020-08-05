@@ -1,0 +1,32 @@
+.flash {
+    padding: 10px;
+    transition: transform 1s ease-in-out;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+    margin: 5px;
+}
+.flash.on__page {
+    position: absolute;
+    width: 20%;
+    bottom: 12vh;
+    right: 0;
+}
+
+.flash.on__page a {
+    text-decoration: none;
+    font-size: 22px;
+    color: #000000;
+    text-align: center;
+}
+.flash.successful {
+    background-color: #00ba00;
+}
+
+.flash.error {
+    background-color: #e71000;
+}
+
+.flash:hover {
+    transform: scale(1.01);
+}

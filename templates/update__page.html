@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Update {{ product.name }} {% endblock %}
+
+{% block stylesheetlinks %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/append__main.css') }}">
+    <script src="https://kit.fontawesome.com/65d764464c.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="append__products__block">
+            <div class="input__block">
+                <h1 class="input__header">Update <i>"{{ product.name }}"</i></h1>
+                <form action="" method="post" class="product__entry">
+                    <input type="text" name="name" id="name" value="{{ product.name }}" placeholder="Product's name"
+                           readonly required><br>
+                    <input type="date" name="date" id="dateLoc" min="2010-01-01" value="{{ product.date }}" maxlength="8"
+                           placeholder="Product's date" required><br>
+                    <script type="text/javascript">
+                        dateLoc.max = new Date().toISOString().split("T")[0];
+                    </script>
+                    <input type="text" name="info" id="info" class="info__input"
+                           placeholder="Product's info" value="{{ product.info }}" required><br>
+                    <div class="image__date">
+                        <input type="file" name="image" id="image" value="{{ product.image__path }}">
+                        <label for="image" class="users__image__btn" ><i class="fas fa-upload"></i> Choose product's
+                            image</label>
+                    </div>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

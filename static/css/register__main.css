@@ -1,0 +1,19 @@
+.input__block {
+    height: 100%;
+}
+
+.sign__up__block {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    align-self: center;
+}
+
+.sign__up__el  {
+    align-self: center;
+    margin-top: 20px;
+    width: 100%;
+    padding: 8px 20px;
+
+}

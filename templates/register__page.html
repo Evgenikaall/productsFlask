@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheetlinks %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register__main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/append__main.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="append__products__block">
+            <div class="input__block">
+                <div class="input__header">Register new user</div>
+                <form action="" method="post" class="sign__up__block">
+                    {% for cat, msg in get_flashed_messages(True) %}
+                        <div class="flash {{ cat }}">{{ msg }}</div>
+                    {% endfor %}
+                    <input type="text" name="login" class="sign__up__el" required placeholder="Login">
+                    <input type="password" name="psw" class="sign__up__el" required placeholder="Password">
+                    <input type="submit" value="Enter" class="sign__up__el">
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

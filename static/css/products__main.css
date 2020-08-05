@@ -1,0 +1,124 @@
+.pre__content__block {
+    width: 100%;
+    height: 5vh;
+}
+
+.pre__content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.app_button {
+    font-weight: bold;
+    float: right;
+    margin-right: 6%;
+    margin-top: 1%;
+    padding: 8px 20px;
+    background-color: #00ba00;
+    color: #000000;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    line-height: 15px;
+    transition: box-shadow 1s;
+}
+
+.app_button:hover {
+    box-shadow: 0 0 10px #000000;
+}
+
+.product__list {
+    margin: 3% 0;
+    width: 100%;
+}
+
+.product__list__content {
+    padding: 1% 0;
+    width: 80%;
+    background-color: #c3c3c3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000000;
+    transition: box-shadow 0.5s ease-in-out;
+    margin: 0 auto 5vh;
+}
+
+.product__inlist__container {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.product__list__content:hover {
+    box-shadow: 0 0 15px #000000;
+}
+
+.about__product {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    justify-content: space-between;
+    margin-left: 5%;
+}
+
+.product__name {
+    font-size: 55px;
+}
+
+.product__img {
+    align-self: center;
+    width: 25%;
+    border: 1px solid transparent;
+    transition: transform 1s ease-in-out;
+}
+
+.product__img:hover {
+    align-self: center;
+    width: 25%;
+    border: 1px solid transparent;
+    transform: scale(1.01);
+}
+
+.more__details__btn {
+    font-weight: bold;
+    align-self: flex-start;
+    text-decoration: none;
+    color: black;
+    background-color: #00ba00;
+    padding: 5% 6%;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    line-height: 15px;
+    transition: box-shadow 1s;
+}
+
+.more__details__btn:hover {
+    box-shadow: 0 0 10px #000000;
+}
+
+.empty__message {
+    width: 80%;
+    margin: auto;
+    height: 50vh;
+
+}
+
+.empty__message__content {
+    box-shadow: 0 0 10px #000000;
+    border-radius: 10px;
+    text-align: center;
+
+    padding: 16% 7%;
+    font-size: 62px;
+
+    transition: box-shadow 1s ease-in-out;
+}
+
+.empty__message__content:hover {
+    box-shadow: 0 0 15px #000000;
+}
+

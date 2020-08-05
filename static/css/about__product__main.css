@@ -1,0 +1,52 @@
+.about__page {
+    margin: 2% auto;
+    text-align: center;
+}
+
+.product__info {
+    margin-bottom: 1%;
+}
+
+.bottom__selector {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete__button {
+    margin-right: 2%;
+    font-weight: bold;
+    align-self: flex-start;
+    text-decoration: none;
+    color: black;
+    background-color: #ff0000;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    line-height: 15px;
+    transition: box-shadow 1s;
+}
+
+.delete__button:hover {
+    box-shadow: 0 0 10px #000000;
+}
+
+.update__button {
+    font-weight: bold;
+    align-self: flex-start;
+    text-decoration: none;
+    color: black;
+    background-color: #ffed54;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    line-height: 15px;
+    transition: box-shadow 1s;
+}
+
+.update__button:hover {
+    box-shadow: 0 0 10px #000000;
+}
+

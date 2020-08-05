@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: Flask-ImageAlchemy
+Version: 0.0.7
+Summary: SQLAlchemy Standarized Image Field for Flask
+Home-page: https://github.com/rstit/flask-image-alchemy
+Author: RST-IT
+Author-email: piotr.poteralski@rst-it.com
+License: BSD
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: SQLAlchemy
+Requires-Dist: boto3
+Requires-Dist: wand
+
+
+Flask-ImageAlchemy
+-------------
+SQLAlchemy Standarized Image Field for Flask
+
+

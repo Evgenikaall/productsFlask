@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Products {% endblock %}
+
+{% block stylesheetlinks %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/products__main.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="pre__content__block">
+            <div class="pre__content">
+                <a href="/products/append" class="app_button">Add +</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="product__list">
+        {% if products|length > 0 %}
+            {% for product in products %}
+                <div class="product__list__content">
+                    <div class="product__inlist__container">
+                        <div class="about__product">
+                            <h1 class="product__name">{{ product.name }}</h1>
+                            <p class="product__date">{{ product.date }}</p>
+                            <a href="/products/{{ product.id }}" class="more__details__btn">More details</a>
+                        </div>
+                        <img src="{{ url_for('static', filename=product.image__path) }}" alt="" class="product__img">
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="container">
+                <div class="empty__message">
+                    <h1 class="empty__message__content">We haven't products</h1>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

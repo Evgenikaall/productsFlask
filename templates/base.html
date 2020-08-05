@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css' ) }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flash__boxes.css') }}">
+    {% block stylesheetlinks %}{% endblock %}
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="container">
+            <div class="header__set">
+                <div class="header__content">
+                    <img src="{{ url_for('static', filename='img/logo/logo.svg') }}" alt="logo" class="logo">
+                    <nav class="nav__bar">
+                        <a href="{{ url_for('index') }}" class="nav__el">Home</a>
+                        <a href="{{ url_for('products__page') }}" class="nav__el">Products</a>
+                        <a href="{{ url_for('reviews__page') }}" class="nav__el">Reviews</a>
+                        <a href="{{ url_for('shopping__basket__page') }}" class="nav__el">Shopping basket</a>
+                        <a href="{{ url_for('about__page') }}" class="nav__el">About us</a>
+                        <a href="{{ url_for('register__page') }}" class="nav__el">Sign up</a>
+                        <a href="{{ url_for('login__page') }}" class="nav__el">Login</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    {% block body %}
+    {% endblock %}
+
+    {% for cat, msg in get_flashed_messages(True) %}
+        <div class="flash on__page {{ cat }}">
+            <a href="{{ url_for('index') }}">{{ msg }}</a></div>
+    {% endfor %}
+
+    <footer>
+        <div class="footer__back">
+            <div class="footer__content">
+                <ul class="footer__info">
+                    <li class="footer__info__header">Products</li>
+                    <a href="#" class="footer__info__line">Add new product</a>
+                </ul>
+                <ul class="footer__info">
+                    <li class="footer__info__header">Reviews</li>
+                    <a href="#" class="footer__info__line">Check reviews</a>
+                    <a href="#" class="footer__info__line">Add new review</a>
+                </ul>
+                <ul class="footer__info">
+                    <li class="footer__info__header">Shopping basket</li>
+                    <a href="#" class="footer__info__line">Check shopping backet</a>
+                    <a href="#" class="footer__info__line">Add new product</a>
+                </ul>
+                <ul class="footer__info">
+                    <li class="footer__info__header">About</li>
+                    <a href="#" class="footer__info__line">Add new product</a>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
