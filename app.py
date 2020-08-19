@@ -1,13 +1,15 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, get_flashed_messages
+from flask import Flask, render_template, url_for, request, redirect, flash, get_flashed_messages, session
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
-from flask_login import LoginManager
+from flask_login import LoginManager, login_required
 from UserModel import UserModel
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'KuTkUdAk'
+app.config['TESTING'] = False
+
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)
@@ -35,7 +37,7 @@ class UserInfo(db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return UserModel().FromDB(user_id, UserInfo)
+    return db.session.query(UserInfo).get(user_id)
 
 
 @app.route('/', methods=['GET'])
@@ -88,23 +90,27 @@ def product__update(id):
 
 @app.route('/products/append', methods=['GET', 'POST'])
 def append__product():
-    if request.method == 'POST':
-        name = request.form['name']
-        date = request.form['date']
-        info = request.form['info']
-        image__name = request.form['image']
-
-        image__path = "img/products/" + image__name.split('/')[-1]
-        new__product = Products(name=name, date=date, info=info, image__path=image__path)
-        try:
-            db.session.add(new__product)
-            db.session.commit()
-            return redirect('/products')
-        except:
-            return "ERROR"
-
+    if not session.get('is_auth'):
+        flash('Is not auth', category='error')
+        return redirect('/')
     else:
-        return render_template('append__product.html')
+        if request.method == 'POST':
+            name = request.form['name']
+            date = request.form['date']
+            info = request.form['info']
+            image__name = request.form['image']
+
+            image__path = "img/products/" + image__name.split('/')[-1]
+            new__product = Products(name=name, date=date, info=info, image__path=image__path)
+            try:
+                db.session.add(new__product)
+                db.session.commit()
+                return redirect('/products')
+            except:
+                return "ERROR"
+
+        else:
+            return render_template('append__product.html')
 
 
 @app.route('/reviews')
@@ -136,6 +142,7 @@ def register__page():
                 db.session.add(user)
                 db.session.commit()
                 flash('You are successful registered on the service', category='successful')
+                session['is_auth'] = True
                 return redirect('/')
             except:
                 return "ERROR"
@@ -144,11 +151,31 @@ def register__page():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login__page():
+    if session.get('is_auth'):
+        flash("Already", category='successful')
     if request.method == 'POST':
-        user__from__db = UserInfo.query
+        login = request.form['login']
+        psw = request.form['psw']
+        current_user = UserInfo.query.filter_by(login=login).first()
+        is_user_in_system = current_user is not None
+        if is_user_in_system:
+            session['is_auth'] = True
+            session["user_id"] = current_user.id
+            flash("entered", category="successful")
+            return redirect('/')
+        else:
+            flash("user isn't in system", category="error")
+            return redirect('/')
     else:
-        flash('User successful entered', category='successful')
-        return redirect('/')
+        return render_template('login__page.html')
+
+
+@app.route('/logout')
+def logout__page():
+    if session.get('is_auth'):
+        session.pop('is_auth')
+        flash('logout', category='successful')
+    return redirect('/')
 
 
 if __name__ == '__main__':
